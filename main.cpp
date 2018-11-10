@@ -45,27 +45,14 @@ GLUquadricObj *qobj;
 GLfloat vNormal[3]= {};
 
 GLuint tex;
-
 GLuint tex2;
 GLuint tex3;
 GLuint tex4;
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//lighting
-//Function to initialize the lighting properties. you can add upto 8 lights in openGL (0-7)
+GLuint tex5;
+
 void initLighting(){
 
-//    //Decalring the Ambient, Diffuse components of the LIght_0 and the position in the eye coordinate system
-//   GLfloat L0_Ambient[] = {1.0, 1.0, 1.0, 1.0};
-//    //GLfloat L0_Diffuse[] = {1.0, 1.0, 1.0, 1.0};
-//    //GLfloat L0_Specular[] = {1.0, 1.0, 1.0, 1.0};
-//    GLfloat L0_postion[] = {5, 5, 0, 1.0};
-//
-//    glLightfv(GL_LIGHT0, GL_AMBIENT, L0_Ambient);
-//   // glLightfv(GL_LIGHT0, GL_DIFFUSE, L0_Diffuse);
-//   // glLightfv(GL_LIGHT0, GL_SPECULAR, L0_Specular);
-//    glLightfv(GL_LIGHT0, GL_POSITION, L0_postion);
-
-GLfloat L0_Ambient[] = {0.8, 0.8, 0.8, 1.0};
+    GLfloat L0_Ambient[] = {0.8, 0.8, 0.8, 1.0};
     GLfloat L0_Diffuse[] = {0.7, 0.7, 0.7, 1.0};
     GLfloat L0_postion[] = {0, 100, 0, 1.0};
 
@@ -75,11 +62,10 @@ GLfloat L0_Ambient[] = {0.8, 0.8, 0.8, 1.0};
 
     GLfloat L1_Ambient[] = {0.5, 0.5, 0.5, 1.0};
     GLfloat L1_Diffuse[] = {0.7, 0.7, 0.7, 1.0};
-    GLfloat L1_Specular[] = {0.0, 1.0, 0.0, 1.0};   //Declaration of the specular component of the light_1
+    GLfloat L1_Specular[] = {0.0, 1.0, 0.0, 1.0};
     GLfloat L1_postion[] = {14.9, 15, -17, 1.0};
 
     glLightfv(GL_LIGHT1, GL_AMBIENT, L1_Ambient);
-    //glLightfv(GL_LIGHT1, GL_EMISSION, L1_Diffuse);
     glLightfv(GL_LIGHT1, GL_DIFFUSE, L1_Diffuse);
     glLightfv(GL_LIGHT1, GL_SPECULAR, L1_Specular);
     glLightfv(GL_LIGHT1, GL_POSITION, L1_postion);
@@ -92,7 +78,7 @@ GLfloat L0_Ambient[] = {0.8, 0.8, 0.8, 1.0};
 
 
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //textures
 void initTexture(){
 
@@ -133,7 +119,6 @@ void initTexture(){
     // glTexImage2D( GL_TEXTURE_2D, 0,GL_RGBA, 2, 2, 0, GL_RGBA, GL_UNSIGNED_BYTE, data );
 
 }
-
 void initTexture2(){
 
     int width, height;
@@ -146,32 +131,18 @@ void initTexture2(){
         std::cout << &image2 << std::endl;
     }
 
-
-    unsigned char data[] =
-    {
-        128, 128, 128, 255,
-        255, 0, 0, 255,
-        0, 255, 0, 255,
-        0, 0, 255, 255
-    };
-
-
-
     glGenTextures( 1, &tex2 );
     glBindTexture( GL_TEXTURE_2D, tex2 );
-
 
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE );
 
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB,
-              GL_UNSIGNED_BYTE, image2);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB,GL_UNSIGNED_BYTE, image2);
 
     // Use the following line in order to load the created texture map instead of the image
     // glTexImage2D( GL_TEXTURE_2D, 0,GL_RGBA, 2, 2, 0, GL_RGBA, GL_UNSIGNED_BYTE, data );
-
 }
 void initTexture3(){
 
@@ -185,35 +156,19 @@ void initTexture3(){
         std::cout << &image3 << std::endl;
     }
 
-
-    unsigned char data[] =
-    {
-        128, 128, 128, 255,
-        255, 0, 0, 255,
-        0, 255, 0, 255,
-        0, 0, 255, 255
-    };
-
-
-
     glGenTextures( 1, &tex3 );
     glBindTexture( GL_TEXTURE_2D, tex3 );
-
 
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE );
 
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB,
-              GL_UNSIGNED_BYTE, image3);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB,GL_UNSIGNED_BYTE, image3);
 
     // Use the following line in order to load the created texture map instead of the image
     // glTexImage2D( GL_TEXTURE_2D, 0,GL_RGBA, 2, 2, 0, GL_RGBA, GL_UNSIGNED_BYTE, data );
-
 }
-
-
 void initTextureRoad(){
 
     int width, height;
@@ -226,34 +181,45 @@ void initTextureRoad(){
         std::cout << &image << std::endl;
     }
 
-
-    unsigned char data[] =
-    {
-        128, 128, 128, 255,
-        255, 0, 0, 255,
-        0, 255, 0, 255,
-        0, 0, 255, 255
-    };
-
-
-
     glGenTextures( 1, &tex4 );
     glBindTexture( GL_TEXTURE_2D, tex4 );
-
 
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE );
 
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB,
-              GL_UNSIGNED_BYTE, image);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB,GL_UNSIGNED_BYTE, image);
 
     // Use the following line in order to load the created texture map instead of the image
     // glTexImage2D( GL_TEXTURE_2D, 0,GL_RGBA, 2, 2, 0, GL_RGBA, GL_UNSIGNED_BYTE, data );
-
 }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void initTextureGrass(){
+
+    int width, height;
+    unsigned char* image = SOIL_load_image("C:/Users/Rashmi/Pictures/ground.jpg", &width, &height, 0, SOIL_LOAD_RGB);
+
+
+    if (!image) {
+        std::cout << "Failed to load texture: " << sizeof(image) << std::endl;
+    }else{
+        std::cout << &image << std::endl;
+    }
+
+    glGenTextures( 1, &tex5 );
+    glBindTexture( GL_TEXTURE_2D, tex5 );
+
+    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
+    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
+    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE );
+    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE );
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB,GL_UNSIGNED_BYTE, image);
+
+    // Use the following line in order to load the created texture map instead of the image
+    // glTexImage2D( GL_TEXTURE_2D, 0,GL_RGBA, 2, 2, 0, GL_RGBA, GL_UNSIGNED_BYTE, data );
+}
+
 void Timer(int x){
     animateRotation += animateRotation >= 360.0? -animateRotation : 5;
     glutPostRedisplay();
@@ -264,7 +230,7 @@ void Timer(int x){
 
 void init(){
     glClearColor(0.5f, 0.5f, 1.0f, 1.0f);
-     GLfloat globalAmbient[] = {0.8, 0.8, 0.8, 1.0};
+    GLfloat globalAmbient[] = {0.8, 0.8, 0.8, 1.0};
     glEnable(GL_DEPTH_TEST);
     //glEnable(GL_CULL_FACE);
 
@@ -273,11 +239,8 @@ void init(){
 
     glShadeModel(GL_SMOOTH);
 
-
-
     // Changing the global Ambient illumination without any lights present
-  glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globalAmbient);
-
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globalAmbient);
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
 
     initLighting();
@@ -286,9 +249,8 @@ void init(){
     glEnable(GL_COLOR_MATERIAL);
 
     //Turn on lighting
-  glEnable(GL_LIGHT0);
+    glEnable(GL_LIGHT0);
     glEnable(GL_LIGHT1);
-    // glEnable(GL_LIGHT2);
 
     // enable the normalization of the normal vectors (converting the vector values to the range 0-1)
     glEnable(GL_NORMALIZE);
@@ -300,72 +262,65 @@ void init(){
     initTexture2();
     initTexture3();
     initTextureRoad();
-
+    initTextureGrass();
 }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void drawFloor(){
 
     glBegin(GL_QUADS);
-                   glColor4f(0, 1, 0, 1);
-//                        glNormal3d(1, 0, 0);
-//                        glTexCoord2f(1/8,1/8);
-//                        glVertex3f(25,0, 25);
-//                        glTexCoord2f(1-1/8,1/8 );
-//                        glVertex3f(-25,0, 25);
-//                        glTexCoord2f(1-1/8,1-1/8 );
-//                        glVertex3f(-25,0, -25);
-//                        glTexCoord2f(1/8,1-1/8);
-//                        glVertex3f(25,0, -25);
+        glColor4f(0, 1, 0, 1);
 
-                            glNormal3d(0, 0, 1);
-                        glTexCoord2f(0,1);
-                        glVertex3f(50,0, 50);
-                        glTexCoord2f(1,1 );
-                        glVertex3f(-50,0, 50);
-                        glTexCoord2f(1,0 );
-                        glVertex3f(-50,0, -50);
-                        glTexCoord2f(0,0);
-                        glVertex3f(50,0, -50);
+        glNormal3d(0, 0, 1);
+        glTexCoord2f(0,1);
+        glVertex3f(50,0, 50);
+        glTexCoord2f(1,1 );
+        glVertex3f(-50,0, 50);
+        glTexCoord2f(1,0 );
+        glVertex3f(-50,0, -50);
+        glTexCoord2f(0,0);
+        glVertex3f(50,0, -50);
 
-
-                glEnd();
-
-
+    glEnd();
 }
-
-
-//////////////////////////////////////////////////////////////////////////////////////
-//balloon
 
 void drawSnowMan() {
 
+    glPushMatrix();
+    glColor3f(0.92f, 0.12f, 0.6f);
 
- glColor3f(1.0f, 1.0f, 1.0f);
+    // Draw Body
+    glTranslatef(-30.0f ,4.1f, 20.0f);
+    glutSolidSphere(4.0f,20,20);
 
-// Draw Body
- glTranslatef(0.0f ,0.75f, 0.0f);
- glutSolidSphere(0.75f,20,20);
+    // Draw Head
+    glColor3f(0.89f, 0.47f, 0.37f);
+    glTranslatef(0.0f, 5.5f, 0.0f);
+    glutSolidSphere(2.0f,20,20);
 
 
-// Draw Head
- glTranslatef(0.0f, 1.0f, 0.0f);
- glutSolidSphere(0.25f,20,20);
+    // Draw Eyes and nose
+    glPushMatrix();
+    glRotatef(50,0,1,0);
+    glColor3f(0.0f,0.0f,0.0f);
+    glTranslatef(0.6f, 0.50f, 2.0f);
+    glutSolidSphere(0.5f,10,10);
+    glTranslatef(-1.2f, 0.0f, 0.0f);
+    glutSolidSphere(0.5f,10,10);
+    glTranslatef(0.6f, -1.5f, 0.0f);
+    glColor3f(1,0,0);
+    glutSolidSphere(0.8f,10,10);
+    glPopMatrix();
 
-// Draw Eyes
- glPushMatrix();
- glColor3f(0.0f,0.0f,0.0f);
- glTranslatef(0.05f, 0.10f, 0.18f);
- glutSolidSphere(0.05f,10,10);
- glTranslatef(-0.1f, 0.0f, 0.0f);
- glutSolidSphere(0.05f,10,10);
+     //draw ears
+     glRotatef(50,0,1,0);
+    glColor3f(0.0f, 0.0f, 0.0f);
+    glTranslatef(-1.3f, 1.4f, 0.9f);
+    glutSolidSphere(0.5f,20,20);
+
+    glTranslatef(2.6f, 0.0f, 0.0f);
+    glutSolidSphere(0.5f,20,20);
+
  glPopMatrix();
-
-// Draw Nose
- glColor3f(1.0f, 0.5f , 0.5f);
- glRotatef(0.0f,1.0f, 0.0f, 0.0f);
- glutSolidCone(0.08f,0.5f,10,2);
 }
 
 
@@ -611,9 +566,30 @@ glColor3f(1,1,1);
 glTexCoord2f(0,1);
 glVertex3f(0.0f, 0.0f, 0.0f);
 glTexCoord2f(1,1);
-glVertex3f(0.0f, 0.0f, 15.0f);
+glVertex3f(0.0f, 0.0f, 14.0f);
 glTexCoord2f(1,0);
-glVertex3f(100.0f, 0.0f,15.0f);
+glVertex3f(100.0f, 0.0f,14.0f);
+glTexCoord2f(0,0);
+glVertex3f(100.0f,0.00f, 0.0f);
+
+glEnd();
+
+
+    glPopMatrix();
+}
+
+void drawGrass(){
+        glPushMatrix();
+    glTranslatef(-50,0.1,42.0 );
+
+     glBegin(GL_QUADS);
+
+glTexCoord2f(0,1);
+glVertex3f(0.0f, 0.0f, 0.0f);
+glTexCoord2f(1,1);
+glVertex3f(0.0f, 0.0f, 14.0f);
+glTexCoord2f(1,0);
+glVertex3f(100.0f, 0.0f,14.0f);
 glTexCoord2f(0,0);
 glVertex3f(100.0f,0.00f, 0.0f);
 
@@ -1075,7 +1051,7 @@ void display() {
     glPushMatrix();
 
         // camera orientation (eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ)
-        gluLookAt(0.0 + camX, 7.0 + camY, 30.0 + camZ, 0, 0, 0, 0, 1.0, 0);
+        gluLookAt(0.0 + camX, 7.0 + camY, 46.0 + camZ, 0, 0, 0, 0, 1.0, 0);
 
         // move the object frame using keyboard keys
         glTranslatef(moveX, moveY, moveZ );
@@ -1121,6 +1097,12 @@ glEnable( GL_TEXTURE_2D );
             glBindTexture( GL_TEXTURE_2D, tex4 );
             drawMainRoad();
             glDisable(GL_TEXTURE_2D);
+
+            glEnable( GL_TEXTURE_2D );
+            glBindTexture( GL_TEXTURE_2D, tex5 );
+            drawGrass();
+            glDisable(GL_TEXTURE_2D);
+
 glPushMatrix();
 glTranslatef(-16, 0, 0);
 glRotatef(animateRotation, 0.0, 1.0, 0.0);
