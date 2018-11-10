@@ -48,6 +48,7 @@ GLuint tex;
 
 GLuint tex2;
 GLuint tex3;
+GLuint tex4;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //lighting
 //Function to initialize the lighting properties. you can add upto 8 lights in openGL (0-7)
@@ -213,7 +214,45 @@ void initTexture3(){
 }
 
 
+void initTextureRoad(){
 
+    int width, height;
+    unsigned char* image = SOIL_load_image("C:/Users/Rashmi/Pictures/road2.jpg", &width, &height, 0, SOIL_LOAD_RGB);
+
+
+    if (!image) {
+        std::cout << "Failed to load texture: " << sizeof(image) << std::endl;
+    }else{
+        std::cout << &image << std::endl;
+    }
+
+
+    unsigned char data[] =
+    {
+        128, 128, 128, 255,
+        255, 0, 0, 255,
+        0, 255, 0, 255,
+        0, 0, 255, 255
+    };
+
+
+
+    glGenTextures( 1, &tex4 );
+    glBindTexture( GL_TEXTURE_2D, tex4 );
+
+
+    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
+    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
+    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE );
+    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE );
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB,
+              GL_UNSIGNED_BYTE, image);
+
+    // Use the following line in order to load the created texture map instead of the image
+    // glTexImage2D( GL_TEXTURE_2D, 0,GL_RGBA, 2, 2, 0, GL_RGBA, GL_UNSIGNED_BYTE, data );
+
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Timer(int x){
     animateRotation += animateRotation >= 360.0? -animateRotation : 5;
@@ -260,6 +299,7 @@ void init(){
     initTexture();
     initTexture2();
     initTexture3();
+    initTextureRoad();
 
 }
 
@@ -559,6 +599,28 @@ glVertex3f(-4.0f, 0.1f, 25.0f);
     glPopMatrix();
 
 
+}
+
+void drawMainRoad(){
+        glPushMatrix();
+    glTranslatef(-50,0.1,28 );
+glColor3f(1,1,1);
+
+     glBegin(GL_QUADS);
+
+glTexCoord2f(0,1);
+glVertex3f(0.0f, 0.0f, 0.0f);
+glTexCoord2f(1,1);
+glVertex3f(0.0f, 0.0f, 15.0f);
+glTexCoord2f(1,0);
+glVertex3f(100.0f, 0.0f,15.0f);
+glTexCoord2f(0,0);
+glVertex3f(100.0f,0.00f, 0.0f);
+
+glEnd();
+
+
+    glPopMatrix();
 }
 
 void drawSeeSaw(){
@@ -1055,13 +1117,10 @@ void display() {
             glDisable(GL_TEXTURE_2D);
             drawCanteen();
 
-
-
-            // glPushMatrix();
-           // glRotatef(animateRotation, 0.0, 1.0, 0.0);
-            //glTranslatef(0.0, -0.5, 0.0);
-            //glScalef(2,2,2);
-          //  glMatrixMode(GL_MODLEVIEW);
+glEnable( GL_TEXTURE_2D );
+            glBindTexture( GL_TEXTURE_2D, tex4 );
+            drawMainRoad();
+            glDisable(GL_TEXTURE_2D);
 glPushMatrix();
 glTranslatef(-16, 0, 0);
 glRotatef(animateRotation, 0.0, 1.0, 0.0);
