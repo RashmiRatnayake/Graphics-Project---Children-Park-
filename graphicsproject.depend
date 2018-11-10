@@ -1,0 +1,50 @@
+# depslib dependency file v1.0
+1541848368 source:c:\users\rashmi\documents\graphicsproject\main.cpp
+	<iostream>
+	<windows.h>
+	<GL/freeglut.h>
+	<GL/freeglut_ext.h>
+	<GL/freeglut_std.h>
+	<math.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<GL/glut.h>
+	<GL/glext.h>
+	<SimpleOpenGLImageLibrary/src/SOIL.h>
+
+1426329928 c:\users\rashmi\desktop\freeglut\include\gl\freeglut.h
+	"freeglut_std.h"
+	"freeglut_ext.h"
+
+1426329928 c:\users\rashmi\desktop\freeglut\include\gl\freeglut_std.h
+	<windows.h>
+	<EGL/egl.h>
+	<GLES/gl.h>
+	<GLES2/gl2.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
+1426329928 c:\users\rashmi\desktop\freeglut\include\gl\freeglut_ext.h
+	<stdarg.h>
+
+1426329928 c:\users\rashmi\desktop\freeglut\include\gl\glut.h
+	"freeglut_std.h"
+
+1215434608 source:c:\users\rashmi\documents\graphicsproject\soil.c
+	<windows.h>
+	<wingdi.h>
+	<GL/gl.h>
+	<OpenGL/gl.h>
+	<Carbon/Carbon.h>
+	<GL/gl.h>
+	<GL/glx.h>
+	"SOIL.h"
+	"stb_image_aug.h"
+	"image_helper.h"
+	"image_DXT.h"
+	<stdlib.h>
+	<string.h>
+
