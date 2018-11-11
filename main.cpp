@@ -234,7 +234,7 @@ void Timer(int x){
 void makeCylinder(GLfloat height, GLfloat base){
 GLUquadric *obj = gluNewQuadric();
 //gluQuadricDrawStyle(obj, GLU_LINE);
-glColor3f(0.03f, 0.23f, 0.01f);
+//glColor3f(0.03f, 0.23f, 0.01f);
 glPushMatrix();
 glRotatef(-90, 1.0,0.0,0.0);
 gluCylinder(obj, base,base-(0.2*base), height, 20,20);
@@ -735,12 +735,12 @@ void drawSeeSaw(){
     glBegin(GL_QUADS);
 
     glColor3f(1.0f, 0.5f, 0.0f);
-
+    //top face
     glVertex3f(2.0f, 1.0f, 10.0f);
     glVertex3f(2.0f, 1.0f, 11.0f);
     glVertex3f(10.0f, 4.0f, 11.0f);
     glVertex3f(10.0f, 4.0f, 10.0f);
-
+    //bottom face
     glVertex3f(2.0f, 0.7f, 10.0f);
     glVertex3f(2.0f, 0.7f, 11.0f);
     glVertex3f(10.0f, 3.7f, 11.0f);
@@ -759,8 +759,8 @@ void drawSeeSaw(){
 
     glVertex3f(2.0f, 1.0f, 11.0f);
     glVertex3f(2.0f, 0.7f, 11.0f);
-    glVertex3f(10.0f, 4.7f, 11.0f);
-    glVertex3f(10.0f, 4.0f, 10.0f);
+    glVertex3f(10.0f, 3.7f, 11.0f);
+    glVertex3f(10.0f, 4.0f, 11.0f);
 
 
     glVertex3f(2.0f, 1.0f, 10.0f);
@@ -892,6 +892,47 @@ void drawChair(){
 
 }
 
+void drawBench(){
+    glPushMatrix();
+        glBegin(GL_QUADS);
+            glColor3f(0.0f, 0.0f, 0.0f);
+            glVertex3f(0,3,0.0);
+            glVertex3f(0,3,5.0);
+            glVertex3f(1.5,3,5.0);
+            glVertex3f(1.5,3,0);
+
+            glColor3f(0.24f, 0.0f, 0.0f);
+            glVertex3f(0,3,0.0);
+            glVertex3f(-0.5,5,0.0);
+            glVertex3f(-0.5,5,5.0);
+            glVertex3f(0,3,5.0);
+
+            //legs
+            glColor3f(0,0,0);
+            glVertex3f(0,3,5.0);
+            glVertex3f(0,0.2,5.0);
+            glVertex3f(0.1,0.2,5.0);
+            glVertex3f(0.1,3,5.0);
+
+            glVertex3f(0.9,3,5.0);
+            glVertex3f(0.9,0.2,5.0);
+            glVertex3f(1,0.2,5.0);
+            glVertex3f(1,3,5.0);
+
+            glVertex3f(0.9,3,0.0);
+            glVertex3f(0.9,0.2,0.0);
+            glVertex3f(1,0.2,0.0);
+            glVertex3f(1,3,0.0);
+
+            glVertex3f(0,3,0.0);
+            glVertex3f(0,0.2,0.0);
+            glVertex3f(0.1,0.2,0.0);
+            glVertex3f(0.1,3,0.0);
+        glEnd();
+    glPopMatrix();
+
+}
+
 void drawMerryGoRound(){
 
     glRotatef( 90, 1.0f, 0.0f, 0.0f );
@@ -928,6 +969,28 @@ void drawMerryGoRoundStand1(){
     glutSolidCylinder(0.2,3.0,50,50);
     glPopMatrix();
 }
+
+void drawMerryGoRoundStand2(){
+
+    glPushMatrix();
+    glTranslatef(15,0,17 );
+    glRotatef(-90,1,0,0);
+    glutSolidCylinder(0.2,3.0,50,50);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(14,2,17 );
+    glRotatef(-90,1,0,0);
+    glutSolidCylinder(1,0.5,50,50);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(13,0,17 );
+    glRotatef(-90,1,0,0);
+    glutSolidCylinder(0.2,3.0,50,50);
+    glPopMatrix();
+}
+
 
 void drawCanteen(){
     glPushMatrix();
@@ -1355,69 +1418,113 @@ void display() {
             glPopMatrix();
 
             glPushMatrix();
+                glColor3f(0.03f, 0.23f, 0.01f);
                 glTranslatef(-35,0,0);
                 glCallList(drawATree);
             glPopMatrix();
 
             glPushMatrix();
+                glColor3f(0.34f, 0.18f, 0.04f);
                 glTranslatef(-35,0,-24);
                 glRotatef(30,0,1,0);
                 glCallList(drawATree);
             glPopMatrix();
 
              glPushMatrix();
+                glColor3f(0.03f, 0.23f, 0.01f);
                 glTranslatef(35,0,-24);
                 glRotatef(-30,0,1,0);
                 glCallList(drawATree);
             glPopMatrix();
 
             glPushMatrix();
-                glTranslatef(20,0,-40);
+                glColor3f(0.03f, 0.23f, 0.01f);
+                glTranslatef(35,0,-40);
+                glRotatef(30,0,1,0);
+                glCallList(drawATree);
+            glPopMatrix();
+
+            glPushMatrix();
+                glColor3f(0.03f, 0.23f, 0.01f);
+                glTranslatef(-20,0,-40);
                 glRotatef(-30,0,1,0);
                 glCallList(drawATree);
             glPopMatrix();
 
             glPushMatrix();
+                glColor3f(0.34f, 0.18f, 0.04f);
                 glTranslatef(25,0,0);
                 glRotatef(-50,0,1,0);
                 glCallList(drawATree);
             glPopMatrix();
 
             glPushMatrix();
+                glColor3f(0.03f, 0.23f, 0.01f);
                 glTranslatef(45,0,24);
                 glRotatef(-50,0,1,0);
                 glCallList(drawATree);
             glPopMatrix();
 
              glPushMatrix();
+                glColor3f(0.1f, 0.41f, 0.01f);
                 glTranslatef(-45,0,24);
                 glRotatef(-30,0,1,0);
                 glCallList(drawATree);
             glPopMatrix();
 
             glPushMatrix();
+                glColor3f(0.03f, 0.23f, 0.01f);
                 glTranslatef(-40,0,46);
                 glRotatef(-30,0,1,0);
                 glCallList(drawATree);
             glPopMatrix();
 
             glPushMatrix();
+                glColor3f(0.34f, 0.18f, 0.04f);
                 glTranslatef(-10,0,48);
                 glRotatef(-20,0,1,0);
                 glCallList(drawATree);
             glPopMatrix();
 
             glPushMatrix();
+                glColor3f(0.03f, 0.23f, 0.01f);
+                //glColor3f(0.12f, 0.57f, 0.07f);
                 glTranslatef(10,0,46);
                 glRotatef(-80,0,1,0);
                 glCallList(drawATree);
             glPopMatrix();
 
             glPushMatrix();
+                glColor3f(0.12f, 0.57f, 0.07f);
                 glTranslatef(30,0,48);
                 glRotatef(-35,0,1,0);
                 glCallList(drawATree);
             glPopMatrix();
+
+            glPushMatrix();
+                glTranslatef(-35,0.1,2);
+                glRotatef(-35,0,1,0);
+                drawBench();
+            glPopMatrix();
+
+            glPushMatrix();
+                glTranslatef(30,0.1,-37);
+                glRotatef(-120,0,1,0);
+                drawBench();
+            glPopMatrix();
+
+            glPushMatrix();
+                glTranslatef(14, 0, 17);
+                glRotatef(animateRotation, 0.0, 1.0, 0.0);
+                glTranslatef(-14,0,-17);
+                glColor3f(0.31f, 0.05f, 0.33f);
+                glPushMatrix();
+                    glTranslatef(14,3,17 );
+                    drawMerryGoRound();
+                glPopMatrix();
+            glPopMatrix();
+
+            drawMerryGoRoundStand2();
 
         glPopMatrix();
 
@@ -1428,13 +1535,6 @@ void display() {
     glutSwapBuffers();
 
 }
-//handlers
-//void handler_func(int x, int y){
-//    if(MOUSEEVENTF_MOVE){
-//
-//    }
-//
-//}
 
 void keyboardSpecial(int key, int x, int y){
     if(key == GLUT_KEY_UP)
@@ -1460,11 +1560,14 @@ void keyboard(unsigned char key , int x , int y){
     if(key == 's')
         camY -= 0.5;
 
-    if(key == 'c')
+    if(key == 'c'){
         glPolygonMode(GL_BACK, GL_LINE);
-        // glPolygonMode(GL_FRONT, GL_FILL);
-    if(key == 'C')
+        glPolygonMode(GL_FRONT, GL_LINE);
+    }
+    if(key == 'C'){
         glPolygonMode(GL_BACK, GL_FILL);
+        glPolygonMode(GL_FRONT, GL_FILL);
+    }
 
     if(key == 'k')
         glDisable(GL_LIGHT0);
